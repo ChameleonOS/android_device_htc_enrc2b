@@ -186,18 +186,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/tfa/voice.preset:system/etc/tfa/voice.preset \
     $(LOCAL_PATH)/prebuilt/tfa/voice.speaker:system/etc/tfa/voice.speaker
 
-# Nexus 7 graphics blobs needed for 4.3+
-PRODUCT_COPY_FILES += \
-$(LOCAL_PATH)/prebuilt/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
-$(LOCAL_PATH)/prebuilt/lib/hw/gralloc.tegra3.so:system/lib/hw/gralloc.tegra3.so \
-$(LOCAL_PATH)/prebuilt/lib/hw/hwcomposer.tegra3.so:system/lib/hw/hwcomposer.tegra3.so \
-$(LOCAL_PATH)/prebuilt/lib/libnvapputil.so:system/lib/libnvapputil.so \
-$(LOCAL_PATH)/prebuilt/lib/libnvasfparserhal.so:system/lib/libnvasfparserhal.so \
-$(LOCAL_PATH)/prebuilt/lib/libnvaviparserhal.so:system/lib/libnvaviparserhal.so \
-$(LOCAL_PATH)/prebuilt/lib/libnvavp.so:system/lib/libnvavp.so \
-$(LOCAL_PATH)/prebuilt/lib/libnvddk_2d.so:system/lib/libnvddk_2d.so \
-$(LOCAL_PATH)/prebuilt/lib/libnvsm.so:system/lib/libnvsm.so
-
 # Hostapd
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/hostap/hostapd:system/bin/hostapd
