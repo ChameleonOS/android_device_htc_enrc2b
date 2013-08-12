@@ -3,7 +3,7 @@
         "project": "nightlies",
         "repository": "android_vendor_htc_enrc2b",
         "target_path": "vendor/htc/enrc2b",
-        "branch": "master"
+        "branch": "4.3"
     },
     {
         "project": "nightlies",
