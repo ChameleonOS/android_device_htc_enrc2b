@@ -16,4 +16,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/cm_enrc2b.mk
+    $(LOCAL_DIR)/cos_enrc2b.mk

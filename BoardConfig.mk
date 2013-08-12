@@ -17,6 +17,24 @@
 
 TARGET_BOOTLOADER_BOARD_NAME := enrc2b
 
+# Board 
+TARGET_BOARD_PLATFORM := tegra
+TARGET_NO_BOOTLOADER := true
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_SMP := true
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+ARCH_ARM_USE_NON_NEON_MEMCPY := true
+
+# Board naming
+TARGET_NO_RADIOIMAGE := true
+TARGET_BOOTLOADER_BOARD_NAME := 
+TARGET_BOARD_PLATFORM := tegra
+
 # Optimization build flags
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
@@ -35,14 +53,34 @@ WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4334_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 
 # BT
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/enrc2b/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := device/htc/enrc2b/bluetooth/vnd_enrc2b.txt
 
 # HTC ril compatability
 TARGET_PROVIDES_LIBRIL := device/htc/enrc2b/proprietary/lib/libhtc-ril.so
+BOARD_USE_NEW_LIBRIL_HTC := true
 
 #Audio
+BOARD_USES_ALSA_AUDIO := false
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 BOARD_USES_GENERIC_AUDIO := false
+
+#Camera
+USE_CAMERA_STUB := false
+CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
+BOARD_HAVE_HTC_FFC := true
+BOARD_CAMERA_HAVE_ISO := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB 
+COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
+
+# EGL settings
+USE_OPENGL_RENDERER := true
+BOARD_EGL_NEEDS_LEGACY_FB := true
+
+# Enable WEBGL in WebKit
+ENABLE_WEBGL := true
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun0/file"
