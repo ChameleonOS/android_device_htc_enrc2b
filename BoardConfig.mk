@@ -121,11 +121,11 @@ TARGET_PREBUILT_KERNEL := device/htc/enrc2b/recovery/recovery-kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # SE Linux policies
-BOARD_SEPOLICY_DIRS := \
-    device/htc/enrc2b/selinux
+#BOARD_SEPOLICY_DIRS := \
+    #device/htc/enrc2b/selinux
 
-BOARD_SEPOLICY_UNION := \
-    file_contexts \
-    file.te \
-    device.te \
-    domain.te
+#BOARD_SEPOLICY_UNION := \
+#    file_contexts \
+ #   file.te \
+  #  device.te \
+   # domain.te
