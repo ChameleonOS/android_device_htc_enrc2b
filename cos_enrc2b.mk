@@ -48,6 +48,7 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/ramdisk/fstab.enrc2b:root/fstab.enrc2b
 
 
+
 # Prebuilt Audio/GPS/Camera/Wi-Fi configs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/dsp/AIC3008_REG_DualMic_XA.csv:system/etc/AIC3008_REG_DualMic_XA.csv \
@@ -185,10 +186,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/tfa/voice.preset:system/etc/tfa/voice.preset \
     $(LOCAL_PATH)/prebuilt/tfa/voice.speaker:system/etc/tfa/voice.speaker
 
-# Vold.fstab
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab
-
 # Hostapd
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/hostap/hostapd:system/bin/hostapd
@@ -226,8 +223,6 @@ PRODUCT_PACKAGES += \
 
 # other apps
 PRODUCT_PACKAGES += \
-    Apollo \
-    DSPManager \
     libcyanogen-dsp \
     libncurses \
     bash \
@@ -252,15 +247,6 @@ PRODUCT_PACKAGES += \
     sdcard \
     libmtp
 
-# for bugmailer
-ifneq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_PACKAGES += send_bug
-    PRODUCT_COPY_FILES += \
-        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-        system/extras/bugmailer/send_bug:system/bin/send_bug    
-endif
-
-
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.com.google.locationfeatures=1 \
         ro.setupwizard.enable_bypass=1 \
@@ -269,10 +255,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
         dalvik.vm.dexopt-flags=m=y \
         persist.sys.usb.config=mtp,adb \
         ro.adb.secure=0
-
-# Cell Broadcasts
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.cellbroadcast.emergencyids=0-65534 
 
 # Tegra 3 spacific overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -291,4 +273,5 @@ PRODUCT_LOCALES += en_GB xhdpi
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product-if-exists, vendor/htc/enrc2b/enrc2b-vendor.mk)
-$(call inherit-product, $(LOCAL_PATH)/phone-xhdpi-1024-dalvik-heap.mk) ## Needs a specific config for the device to boot - Lloir
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+

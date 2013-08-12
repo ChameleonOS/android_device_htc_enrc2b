@@ -52,6 +52,10 @@ WIFI_DRIVER_FW_PATH_STA     := "/system/etc/firmware/fw_bcm4334.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/etc/firmware/fw_bcm4334_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/system/etc/firmware/fw_bcm4334_p2p.bin"
 
+# EGL settings
+USE_OPENGL_RENDERER := true
+BOARD_EGL_NEEDS_LEGACY_FB := true
+
 # BT
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -82,6 +86,9 @@ BOARD_EGL_NEEDS_LEGACY_FB := true
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
 
+#Audio
+BOARD_USES_GENERIC_AUDIO := false
+
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun0/file"
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -109,8 +116,16 @@ TARGET_KERNEL_CONFIG := blade_cm10_oc_cpuquiet_defconfig
 
 # dont build docs
 DISABLE_DROIDDOC := true
-
 TARGET_PREBUILT_KERNEL := device/htc/enrc2b/recovery/recovery-kernel
 
 BOARD_HAS_NO_SELECT_BUTTON := true
 
+# SE Linux policies
+BOARD_SEPOLICY_DIRS := \
+    device/htc/enrc2b/selinux
+
+BOARD_SEPOLICY_UNION := \
+    file_contexts \
+    file.te \
+    device.te \
+    domain.te

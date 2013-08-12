@@ -21,8 +21,7 @@ on init
     symlink /storage/sdcard0 /usbdisk
     symlink /storage/sdcard0 /mnt/usbdisk
 
-    mkdir /mnt/usb 0000 system system
-    mkdir /mnt/cifs 0000 system system
+    mkdir /mnt/usb 0775 system system
     
 on fs
     mkdir /rca 0775 radio radio
@@ -556,7 +555,6 @@ service detect_key /sbin/detect_key
 service htcbatt /sbin/htcbatt
     oneshot
 
-
 service console /system/bin/sh
     class core
     console
@@ -640,6 +638,14 @@ service mdnsd /system/bin/mdnsd
     user mdnsr
     group inet net_raw
     socket mdnsd stream 0660 mdnsr inet
+    disabled
+    oneshot
+   
+service mtpd /system/bin/mtpd
+    class main
+    socket mtpd stream 600 system system
+    user vpn
+    group vpn net_admin inet net_raw
     disabled
     oneshot
 
