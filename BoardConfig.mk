@@ -45,6 +45,9 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/enrc2b/bluetooth/vnd_enrc2b.txt
 # HTC ril compatability
 TARGET_PROVIDES_LIBRIL := device/htc/enrc2b/proprietary/lib/libhtc-ril.so
 
+#Audio
+BOARD_USES_GENERIC_AUDIO := false
+
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun0/file"
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
